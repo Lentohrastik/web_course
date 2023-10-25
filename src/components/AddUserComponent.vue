@@ -15,30 +15,11 @@
                 <div v-for="(item, idx) in photoExaples" v-bind:key="idx" class="card">
                     <img :src="item.src" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="nav-link px-0">
-                            <i class="fs-4 text-white" :class="item.class"></i> <span
-                                class="ms-1 d-none d-md-inline text-white">{{ item.text }}</span>
+                        <h5>
+                            <i class="" :class="item.class"></i> <span class="">{{ item.text }}</span>
                         </h5>
                     </div>
                 </div>
-                <!-- <div class="card">
-                    <img src="../assets/img/carousel2.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="nav-link px-0">
-                            <i class="fs-4 text-white bi-check-square"></i> <span
-                                class="ms-1 d-none d-md-inline text-white">Один человек в кадре</span>
-                        </h5>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="../assets/img/carousel4.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="nav-link px-0">
-                            <i class="fs-4 text-white bi-dash-square"></i> <span
-                                class="ms-1 d-none d-md-inline text-white">В кадре нет людей</span>
-                        </h5>
-                    </div>
-                </div> -->
             </div>
 
             <div class="input-group mb-3">
@@ -93,9 +74,9 @@ export default {
         return {
             image: "https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.png",
             photoExaples: [
-                { class: "bi-dash-squar", text: "Несколько людей в кадре", src: "../assets/img/several_people.png" },
-                { class: "bi-check-square", text: "Один человек в кадре", src: "../assets/img/one_people.png" },
-                { class: "bi-dash-squar", text: "В кадре нет людей", src: "../assets/img/several_people.png" },
+                { class: "bi-dash-square", text: "Несколько людей в кадре", src: "https://mmgtalent.com/images/job/resized/_700-1_screen_shot_20200505_at_10.45.22_am.png" },
+                { class: "bi-check-square", text: "Один человек в кадре", src: "https://hamariweb.com/images/articles/articles/152272_05.png" },
+                { class: "bi-dash-square", text: "В кадре нет людей", src: "https://beautifoto.ru/wp-content/uploads/2019/07/5-7.jpg" },
             ]
         };
     },
