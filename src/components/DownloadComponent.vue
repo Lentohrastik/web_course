@@ -7,7 +7,7 @@
         <p class="text-center">Для получения доступа к автоматической титровальной системе Вы можете оставить заявку, указав
             Ващи данные, и мы обязательно рассмотрим ее в ближайшее время.</p>
     </div>
-    <div class="d-flex align-items-center justify-content-center">
+    <div class="d-flex align-items-center justify-content-center mb-5">
         <form>
             <div class="mb-3 p-2" id="contactForm">
                 <label for="inputEmail" class="form-label">Адрес электронной почты</label>
@@ -23,7 +23,7 @@
                 <input type="tel" class="form-control" id="inputPhone">
             </div>
             <div class="text-center">
-                <button type="submit" class="btn btn-primary ">Отправить</button>
+                <button type="submit" class="btn">Отправить</button>
             </div>
 
         </form>

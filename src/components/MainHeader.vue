@@ -7,7 +7,7 @@
 
                 <div class="container-fluid">
                     <router-link class="navbar-brand" to="/">
-                        <img src="../assets/logo.png" alt="logo" width="100">
+                        <img src="../assets/logo.svg" alt="logo" width="60">
                         Auto Caption System</router-link>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,7 +49,7 @@
                                         <ul class="dropdown-menu">
                                             <li><router-link to="/casparcg" class="dropdown-item">CasparCG</router-link>
                                             </li>
-                                            <router-link to="/cv" class="nav-link">Computer Vision</router-link>
+                                            <router-link to="/cv" class="dropdown-item">Computer Vision</router-link>
                                         </ul>
                                     </li>
                                 </ul>
@@ -59,7 +59,7 @@
                             </li>
                         </ul>
                         <div class="ms-lg-auto text-center">
-                            <router-link id="butt" to="/app" class="btn btn-primary">Войти в ACS</router-link>
+                            <router-link id="butt" to="/app" class="btn btn">Войти в ACS</router-link>
                         </div>
                     </div>
 
@@ -68,3 +68,17 @@
         </div>
     </header>
 </template>
+
+
+<style>
+.btn {
+    background-color: #6897C9;
+    color: #FFFAFF;
+}
+
+.btn:hover {
+    background-color: #15171a;
+    color: #6897C9;
+    border-color: #6897C9;
+}
+</style>

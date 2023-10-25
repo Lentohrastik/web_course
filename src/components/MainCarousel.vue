@@ -8,31 +8,13 @@
       <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
     <div class="carousel-inner">
-      <div class="carousel-item active"
-        :style="{ 'background-image': 'url(' + require('../assets/img/carousel1.png') + ')' }">
-        <div class="carousel-container p-2">
-          <div class="carousel-content">
-            <h3>Уникальная технология</h3>
-            <p>Автоматическая титровальная система - узкоспециализированная программа для распознавания спикеров в
-              прямом эфире</p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item" :style="{ 'background-image': 'url(' + require('../assets/img/carousel2.png') + ')' }">
-        <div class="carousel-container p-2">
-          <div class="carousel-content">
-            <h3>Четкость и быстрота</h3>
-            <p>Больше не нужно запоминать спикеров.</p>
-            <p>Достаточно сфотографировать спикеров и запустить программу</p>
-          </div>
-        </div>
-      </div>
 
-      <div class="carousel-item" :style="{ 'background-image': 'url(' + require('../assets/img/carousel4.png') + ')' }">
+      <div v-for="(item, idx) in carouselList" v-bind:key="idx" :class="item.class" class="carousel-item"
+        :style="{ 'background-image': 'url(' + item.url + ')' }">
         <div class="carousel-container p-2">
           <div class="carousel-content">
-            <h3>Титры на любой вкус</h3>
-            <p>Используйте шаблоны из широкого списка представленных</p>
+            <h3>{{ item.h3 }}</h3>
+            <p>{{ item.p }}</p>
           </div>
         </div>
       </div>
@@ -49,9 +31,19 @@
 </template>
 
 <script>
+import img1 from "../assets/img/carousel1.png";
+import img2 from "../assets/img/carousel2.png";
+import img3 from "../assets/img/carousel4.png";
+
 export default {
+
   data() {
     return {
+      carouselList: [
+        { class: "active", url: img1, h3: "Уникальная технология", p: "Автоматическая титровальная система - узкоспециализированная программа для распознавания спикеров в прямом эфире" },
+        { class: "", url: img2, h3: "Четкость и быстрота", p: "Больше не нужно запоминать спикеров.\nДостаточно сфотографировать спикеров и запустить программу" },
+        { class: "", url: img3, h3: "Титры на любой вкус", p: "Используйте шаблоны из широкого списка представленных" },
+      ]
     }
   }
 }
@@ -60,6 +52,16 @@ export default {
 <style scoped>
 /* --Carousel--*/
 #carouselIndicators {
+
+  .carousel-control-next,
+  .carousel-control-prev {
+    filter: invert(100%);
+  }
+
+  .carousel-indicators {
+    filter: invert(100%);
+  }
+
   .carousel {
     margin-bottom: 50px;
   }
@@ -102,14 +104,6 @@ export default {
 }
 
 @media (max-height: 769px) {
-  #carouselIndicators {
-    height: 70vh;
-  }
-
-  #carouselIndicators .carousel-item {
-    height: 70vh;
-  }
-
   #carouselIndicators h3 {
     margin-bottom: 30px;
     font-size: 40px;
@@ -121,4 +115,5 @@ export default {
     font-weight: 300;
   }
 
-}</style>
+}
+</style>

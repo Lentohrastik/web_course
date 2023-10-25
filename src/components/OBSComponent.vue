@@ -27,13 +27,16 @@
             </div>
 
             <div class="p-5 d-flex justify-content-center center">
-                <div class="btn btn-primary btn-rounded">
+                <div class="btn btn-primary btn-rounded" @click="showNotification">
                     <i class="fs-4 bi-send-fill text-white"></i>
                     <span class="ms-1 d-none d-sm-inline text-white">
                         <label class="form-label text-white m-1">Отправить</label>
                     </span>
                 </div>
             </div>
+        </div>
+        <div v-show="isShow" class="alert alert-info text-center" role="alert">
+            Оbs конфиг записан!
         </div>
     </main>
     <MainFooter />
@@ -45,6 +48,20 @@ import MainFooter from './MainFooter.vue';
 
 export default {
     name: 'OBSPage',
-    components: { AppHeader, MainFooter }
+    components: { AppHeader, MainFooter },
+    data() {
+        return {
+            isShow: false,
+        }
+    },
+
+    methods: {
+        showNotification() {
+            this.isShow = true;
+            setTimeout(() => {
+                this.isShow = false;
+            }, 5000)
+        }
+    }
 }
 </script>

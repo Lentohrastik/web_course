@@ -3,31 +3,14 @@
     <section id="team-info">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 col-sm-6 col-xs-12">
+                <div v-for="(item, idx) in photoList" v-bind:key="idx" :class="item.class"
+                    class="col-md-4 col-sm-6 col-xs-12">
                     <div class="card">
                         <div class="img-area">
-                            <img src="../assets/img/team1.png" class="img-fluid" alt="Зараменских">
+                            <img :src="item.src" class="img-fluid" :alt="item.alt">
                         </div>
-                        <h4>Виктория Зараменских</h4>
-                        <h5>Web Designer</h5>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 align-self-center">
-                    <div class="card">
-                        <div class="img-area">
-                            <img src="../assets/img/team3.png" class="img-fluid" alt="Медиацентр">
-                        </div>
-                        <h4>Медиацентр МИЭМ</h4>
-                        <h5>Заказчик</h5>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                    <div class="card">
-                        <div class="img-area">
-                            <img src="../assets/img/team2.png" class="img-fluid" alt="Попов">
-                        </div>
-                        <h4>Леонид Попов</h4>
-                        <h5>Web Designer</h5>
+                        <h4>{{ item.h4 }}</h4>
+                        <h5>{{ item.h5 }}</h5>
                     </div>
                 </div>
             </div>
@@ -40,9 +23,22 @@
 import MainHeader from './MainHeader.vue';
 import MainFooter from './MainFooter.vue';
 
+import img1 from "../assets/img/team1.png";
+import img2 from "../assets/img/team2.png";
+import img3 from "../assets/img/team3.png"
+
 export default {
     name: 'AboutPage',
-    components: { MainHeader, MainFooter }
+    components: { MainHeader, MainFooter },
+    data() {
+        return {
+            photoList: [
+                { h4: "Виктория Зараменских", h5: "Web Designer", src: img1, class: "", alt: "Зараменских" },
+                { h4: "Медиацентр МИЭМ", h5: "Заказчик", src: img3, class: "align-self-center", alt: "Медиацентр" },
+                { h4: "Леонид Попов", h5: "Web Designer", src: img2, class: "", alt: "Попов" },
+            ]
+        };
+    }
 }
 </script>
 

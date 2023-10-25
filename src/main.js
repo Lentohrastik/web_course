@@ -21,6 +21,7 @@ import AppComponent from '/src/components/AppComponent.vue'
 import AddUserComponent from '/src/components/AddUserComponent.vue'
 import TemplateComponent from '/src/components/TemplateComponent.vue'
 import OBSComponent from '/src/components/OBSComponent.vue'
+import DelUserComponent from '/src/components/DelUserComponent.vue'
 
 
 const router = createRouter({
@@ -41,6 +42,7 @@ const router = createRouter({
         { path: '/app/add_user', component: AddUserComponent},
         { path: '/app/template', component: TemplateComponent},
         { path: '/app/obs', component: OBSComponent},
+        { path: '/app/del_user', component: DelUserComponent},
     ]
 });
 

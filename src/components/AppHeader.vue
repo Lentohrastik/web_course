@@ -6,19 +6,16 @@
 
                 <div class="container-fluid">
                     <router-link class="navbar-brand" to="/">
-                        <img src="../assets/logo.png" alt="logo" width="100">
+                        <img src="../assets/logo.svg" alt="logo" width="60">
                         Auto Caption System</router-link>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
+                        <ul v-for="(item, idx) in navList" v-bind:key="idx" class="navbar-nav">
                             <li class="nav-item">
-                                <router-link to="/" class="nav-link active">Главная</router-link>
-                            </li>
-                            <li class="nav-item">
-                                <router-link to="/app" class="nav-link active">Назад</router-link>
+                                <router-link :to="item.to" class="nav-link active">{{ item.text }}</router-link>
                             </li>
                         </ul>
                     </div>
@@ -27,4 +24,17 @@
         </div>
     </header>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            navList: [
+                { to: "/", text: "Главная" },
+                { to: "/app", text: "Назад" },
+            ]
+        };
+    }
+}
+</script>
 

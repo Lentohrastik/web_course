@@ -9,71 +9,16 @@
                 aria-label="Slide 2"></button>
         </div>
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="card-group">
-                    <div class="card">
-                        <img src="../assets/img/carousel1.png" class="card-img-top" alt="...">
+            <div v-for="(item, idx) in carouselList" v-bind:key="idx" :class="item.class" class="carousel-item">
+                <div class="card-group container">
+                    <div v-for="(item2, idx) in item.list" v-bind:key="idx" class="card col col-lg-4">
+                        <LiteYouTubeEmbed :id="item2.src" title="CasparCG for Live Production" />
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="../assets/img/carousel2.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This card has supporting text below as a natural lead-in to additional
-                                content.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="../assets/img/carousel4.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This card has even longer content than the first to show that equal
-                                height action.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            <h5 class="card-title">{{ item2.title }}</h5>
+                            <p class="card-text">{{ item2.text }}</p>
                         </div>
                     </div>
                 </div>
-
-            </div>
-            <div class="carousel-item">
-                <div class="card-group">
-                    <div class="card">
-                        <img src="../assets/img/carousel1.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="../assets/img/carousel2.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This card has supporting text below as a natural lead-in to additional
-                                content.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="../assets/img/carousel4.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This card has even longer content than the first to show that equal
-                                height action.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
@@ -86,15 +31,56 @@
         </button>
     </div>
 
+    <div class="container text-center">
+        <h6>В данном разделе вы можете ознакомиться с обучающими роликами по Автоматической Титровальной Системе. </h6>
+    </div>
+
     <MainFooter />
 </template>
   
 <script>
+import LiteYouTubeEmbed from 'vue-lite-youtube-embed'
+import 'vue-lite-youtube-embed/style.css'
+
 import MainHeader from './MainHeader.vue';
 import MainFooter from './MainFooter.vue';
 
 export default {
+
     name: 'LearnPage',
-    components: { MainHeader, MainFooter }
+    components: { MainHeader, MainFooter, LiteYouTubeEmbed },
+    data() {
+        return {
+            carouselList: [
+                {
+                    list: [
+                        { title: "CasparCG for Live Production", text: "Обзорное видео с возможностями CasparCG, использование шаблонов, разных источников и пр.", src: "Sc3yKYc6gsI" },
+                        { title: "CasparCG First Steps", text: "Начните работать с CasparCG без проблем.", src: "sMCyBE60Dao" },
+                        { title: "Create Template by Loopic", text: "Создавайте шаблоны для CasparCG с помощью веб-приложения Loopic без необходимости разбираться в html коде.", info: "info", src: "gZRYTmngqLw" },
+                    ],
+                    class: "active",
+                },
+                {
+                    list: [
+                        { title: "Распознавание лиц на Python", text: "В данном видео пишем программу для распознавания лиц на изображениях с помощью Python. Научимся находить, сверять, выделять и экспортировать лица людей используя библиотеки Face Recognition и Pillow.", src: "RUez4WJ1Vpo" },
+                        { title: "Live Face Recognition in Python", text: "В этом видео: как реализовать систему распознавания лиц в реальном времени на Python с использованием машинного обучения и OpenCV.", src: "pQvkoaevVMk" },
+                        { title: "How does facial recognition work?", text: "Обзорное видео о биометрической технологии распознавания лица.", info: "info", src: "YX8BzK_LU0E" },
+                    ],
+                    class: "",
+                }
+            ]
+        };
+    }
 }
 </script>
+
+<style scoped>
+.carousel-control-next,
+.carousel-control-prev {
+    filter: invert(100%);
+}
+
+.carousel-indicators {
+    filter: invert(100%);
+}
+</style>

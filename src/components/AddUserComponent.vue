@@ -16,22 +16,20 @@
                     <img :src="item.src" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5>
-                            <i class="" :class="item.class"></i> <span class="">{{ item.text }}</span>
+                            <i :class="item.class"></i> <span class="">{{ item.text }}</span>
                         </h5>
                     </div>
                 </div>
             </div>
 
-            <div class="input-group mb-3">
-                <span type="text" class="input-group-text" id="basic-addon1">Имя и Фамилия</span>
-                <input type="text" class="form-control" placeholder="Имя Фамилия" aria-label="Имя Фамилия"
-                    aria-describedby="basic-addon1">
+            <div v-for="(item, idx) in formList" v-bind:key="idx" class="input-group mb-3">
+                <span type="text" class="input-group-text">{{ item.text }}</span>
+                <input type="text" class="form-control" :placeholder="item.text" :aria-label="item.text"
+                    v-model="item.onMode" aria-describedby="basic-addon1">
             </div>
 
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Роль</span>
-                <input type="text" class="form-control" placeholder="Роль" aria-label="Роль"
-                    aria-describedby="basic-addon1">
+            <div v-show="isShow" class="alert alert-info text-center" role="alert">
+                Пользователь успешно добавлен!
             </div>
 
             <div>
@@ -49,7 +47,7 @@
             </div>
 
             <div class="p-5 d-flex justify-content-center center">
-                <div class="btn btn-primary btn-rounded">
+                <div @click="sendUserForm" class="btn btn-primary btn-rounded">
                     <i class="fs-4 bi-send-fill text-white"></i>
                     <span class="ms-1 d-none d-sm-inline text-white">
                         <label class="form-label text-white m-1">Отправить</label>
@@ -66,18 +64,29 @@
 import AppHeader from './AppHeader.vue';
 import MainFooter from './MainFooter.vue';
 
+import img1 from "../assets/img/several_people.png";
+import img2 from "../assets/img/one_people.png";
+import img3 from "../assets/img/no_people.png";
+
 export default {
     name: 'AddUserPage',
     components: { AppHeader, MainFooter },
 
     data() {
         return {
+            defaultImage: "https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.png",
             image: "https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.png",
             photoExaples: [
-                { class: "bi-dash-square", text: "Несколько людей в кадре", src: "https://mmgtalent.com/images/job/resized/_700-1_screen_shot_20200505_at_10.45.22_am.png" },
-                { class: "bi-check-square", text: "Один человек в кадре", src: "https://hamariweb.com/images/articles/articles/152272_05.png" },
-                { class: "bi-dash-square", text: "В кадре нет людей", src: "https://beautifoto.ru/wp-content/uploads/2019/07/5-7.jpg" },
-            ]
+                { class: "bi-dash-square", text: "Несколько людей в кадре", src: img1 },
+                { class: "bi-check-square", text: "Один человек в кадре", src: img2 },
+                { class: "bi-dash-square", text: "В кадре нет людей", src: img3 },
+            ],
+
+            formList: [
+                { text: "Имя Фамилия", onMode: "" },
+                { text: "Роль", onMode: "" },
+            ],
+            isShow: false,
         };
     },
 
@@ -85,6 +94,16 @@ export default {
         loadFile(e) {
             const file = e.target.files[0];
             this.image = URL.createObjectURL(file)
+        },
+
+        sendUserForm() {
+            this.image = this.defaultImage;
+            this.formList[0].onMode = "";
+            this.formList[1].onMode = "";
+            this.isShow = true;
+            setTimeout(() => {
+                this.isShow = false;
+            }, 5000)
         }
     }
 }
