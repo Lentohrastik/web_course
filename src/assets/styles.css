@@ -1,0 +1,213 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css");
+
+/* --Navbar--*/
+@media (max-width: 769px) {
+    .dropdown-item::after{
+        transform: rotate(90deg);
+    }
+    .navbar-brand {
+      font-size:medium;
+      
+    }
+}
+
+
+/* --Carousel--*/
+#carouselIndicators{
+.carousel {
+  margin-bottom: 50px;
+}
+.carousel-item {
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+  .carousel-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .carousel-content {
+    text-align: center;
+  }
+  h3 {
+    margin-bottom: 30px;
+    font-size: 50px;
+    font-weight: 600;
+  }
+  p {
+  margin: 0 auto 30px auto;
+  font-size: 24px;
+  font-weight: 700;
+}
+}
+
+  @media (max-height: 769px){
+    #carouselIndicators{
+        height: 70vh;
+    }
+    #carouselIndicators .carousel-item {
+        height: 70vh;
+    }
+    #carouselIndicators h3 {
+        margin-bottom: 30px;
+        font-size: 40px;
+        font-weight: 500;
+      }
+      #carouselIndicators p {
+        font-size: 20px;
+        font-weight: 300;
+      }
+    
+  }
+
+
+  /*---About---*/
+.about .content h3 {
+  font-weight: 600;
+  font-size: 26px;
+  color: #dad5d5;
+}
+.about .content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about .content ul li {
+  padding-bottom: 10px;
+}
+
+.about .content ul i {
+  font-size: 20px;
+  padding-right: 4px;
+  color: #463f65;
+}
+
+.about .content p:last-child {
+  margin-bottom: 0;
+}
+
+
+/*--  Download form  --*/
+
+#contactForm{
+  width: 100%
+}
+
+@media (max-width: 500px) {
+  .input-group-text {
+    font-size: 75%;
+  }
+}
+
+@media (max-width: 400px) {
+  .input-group-text {
+    font-size: 50%;
+  }
+}
+
+.plain_text {
+  font-size: 110%;
+}
+
+.btn-primary {
+  --bs-btn-bg: #a6aab0;
+  --bs-btn-border-color: #c6c6c6;
+  --bs-btn-hover-bg: #c6c6c6;
+}
+
+
+
+/*---- Team ----*/
+#team-info{
+  padding-top: 10%;
+
+.card{
+  box-shadow:0px 7px 7px 2px rgba(0,0,0,0.1);
+  background-color: rgb(35, 34, 35);
+  margin-bottom: 10px;
+  margin-left:10px;
+
+}
+
+.img-area{
+  overflow: hidden;
+  position: relative;
+}
+.img-area img{
+  width: 100%;
+}
+.img-area:hover img{
+  transform: scale(1.2)
+}
+.img-area img{
+  transition: all 0.4s ease 0s;
+}
+@media (max-width: 768px){
+  .img-area img{
+      display: inline-block;
+  }
+}
+.img-area .social{
+  background-color: rgba(0,0,0,0.7);
+  position: absolute;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: .5s;
+  transform: rotateY(180deg) scale(0.5, 0.5);
+}
+.img-area .social ul{
+  text-align: center;
+  position: relative;
+  top: 175px;
+}
+.img-area .social ul li a{
+  border: 1px solid #fff;
+  color: #fff;
+  display: block;
+  font-size: 20px;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+.img-area .social ul li a:hover{
+  background-color: #fff;
+  color: #000;
+  border: 1px solid transparent;
+}
+.img-text{
+  padding: 25px;
+  color: black;
+  text-align: center;
+}
+.img-text h4{
+  margin: 0 0 5px;
+  font-size: 30px;
+ font-family: sans-serif;
+  letter-spacing: 5px;
+}
+.img-text h5{
+  font-size: 17px;
+  color: #545154
+
+}
+}
+#butt .btn-primary {
+  --bs-btn-bg: #361b2a;
+  --bs-btn-border-color: #2e1729;
+  --bs-btn-hover-bg: #692d6f;
+}
