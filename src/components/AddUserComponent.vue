@@ -4,7 +4,41 @@
         <div class="p-5">
             <div class="pb-3 text-center text-white">
                 <h2>Окно добавления выступающих</h2>
-                <p>В данном окне можно добавлять пользователей для того, чтоб они распозновались!</p>
+                <p class="mb-3">Заполните информацию о человеке и загрузите его фото!</p>
+                <div>
+                    <p>Имя и роль должны быть написаны с большой буквы через пробел (<b>Пример: Иван Иванов</b>).</p>
+                    <p>На фотографии должно быть строго одно лицо, иначе система не примит вашу фотографию.</p>
+                </div>
+            </div>
+
+            <div class="card-group pb-5">
+                <div v-for="(item, idx) in photoExaples" v-bind:key="idx" class="card">
+                    <img :src="item.src" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="nav-link px-0">
+                            <i class="fs-4 text-white" :class="item.class"></i> <span
+                                class="ms-1 d-none d-md-inline text-white">{{ item.text }}</span>
+                        </h5>
+                    </div>
+                </div>
+                <!-- <div class="card">
+                    <img src="../assets/img/carousel2.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="nav-link px-0">
+                            <i class="fs-4 text-white bi-check-square"></i> <span
+                                class="ms-1 d-none d-md-inline text-white">Один человек в кадре</span>
+                        </h5>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="../assets/img/carousel4.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="nav-link px-0">
+                            <i class="fs-4 text-white bi-dash-square"></i> <span
+                                class="ms-1 d-none d-md-inline text-white">В кадре нет людей</span>
+                        </h5>
+                    </div>
+                </div> -->
             </div>
 
             <div class="input-group mb-3">
@@ -57,7 +91,12 @@ export default {
 
     data() {
         return {
-            image: "https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.png"
+            image: "https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.png",
+            photoExaples: [
+                { class: "bi-dash-squar", text: "Несколько людей в кадре", src: "../assets/img/several_people.png" },
+                { class: "bi-check-square", text: "Один человек в кадре", src: "../assets/img/one_people.png" },
+                { class: "bi-dash-squar", text: "В кадре нет людей", src: "../assets/img/several_people.png" },
+            ]
         };
     },
 
