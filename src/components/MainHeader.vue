@@ -7,8 +7,10 @@
 
                 <div class="container-fluid">
                     <router-link class="navbar-brand" to="/">
-                        <img src="../assets/logo.svg" alt="logo" width="60">
-                        Auto Caption System</router-link>
+                        <atropos-component class="my-atropos">
+                            <img src="../assets/logo.svg" alt="logo" width="60" data-atropos-offset="5">
+                        </atropos-component>
+                    </router-link>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -23,6 +25,9 @@
                             </li>
                             <li class="nav-item">
                                 <router-link to="/documentation" class="nav-link">Документация</router-link>
+                            </li>
+                            <li class="nav-item">
+                                <router-link to="/charts" class="nav-link">Графики</router-link>
                             </li>
                             <!-- Dropdown -->
                             <li class="nav-item dropdown">
@@ -69,6 +74,14 @@
     </header>
 </template>
 
+<script>
+import AtroposComponent from 'atropos/element';
+customElements.define('atropos-component', AtroposComponent);
+export default {
+
+}
+</script>
+
 
 <style>
 .btn {
@@ -80,5 +93,10 @@
     background-color: #15171a;
     color: #6897C9;
     border-color: #6897C9;
+}
+
+.my-atropos {
+    width: 60px;
+    height: 60px;
 }
 </style>

@@ -4,7 +4,9 @@ import App from './App.vue'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import bootstrap from 'bootstrap/dist/js/bootstrap.bundle.js'
-import "bootstrap-icons/font/bootstrap-icons.css";
+import "bootstrap-icons/font/bootstrap-icons.css"
+import 'atropos/css'
+import 'chart.js'
 
 //overview pages
 import HomeComponent from '/src/components/HomeComponent.vue'
@@ -15,6 +17,7 @@ import CVComponent from '/src/components/CVComponent.vue'
 import DetailsComponent from '/src/components/DetailsComponent.vue'
 import CasparComponent from '/src/components/CasparComponent.vue'
 import LearnComponent from '/src/components/LearnComponent.vue'
+import ChartComponent from '/src/components/ChartComponent.vue'
 
 //app pages
 import AppComponent from '/src/components/AppComponent.vue'
@@ -36,6 +39,7 @@ const router = createRouter({
         { path: '/details', component: DetailsComponent},
         { path: '/casparcg', component: CasparComponent},
         { path: '/learn', component: LearnComponent},
+        { path: '/charts', component: ChartComponent},
 
         //app paths
         { path: '/app', component: AppComponent},
