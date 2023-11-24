@@ -112,6 +112,12 @@ export default {
             isSetNewPassword: false,
         }
     },
+    beforeCreate() {
+        if (this.$cookies.get('ACS_cookie')) {
+            this.$router.push('/app')
+        }
+    },
+
     methods: {
         login() {
             var body = {

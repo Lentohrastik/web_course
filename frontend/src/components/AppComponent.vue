@@ -1,5 +1,5 @@
 <template>
-    <MainHeader />
+    <MainAppHeader />
     <main>
         <div class="container-fluid">
             <div class="row flex">
@@ -51,11 +51,11 @@
   
 <script>
 import MainFooter from './MainFooter.vue';
-import MainHeader from './MainHeader.vue';
+import MainAppHeader from './MainAppHeader.vue';
 
 export default {
     name: 'AppPage',
-    components: { MainHeader, MainFooter },
+    components: { MainAppHeader, MainFooter },
 
     data() {
         return {

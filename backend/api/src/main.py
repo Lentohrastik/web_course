@@ -1,8 +1,9 @@
+import fastapi_users
 import uvicorn
 
 from config import API_PORT
 
-from fastapi import Depends, FastAPI
+from fastapi import Depends, FastAPI, Response
 from fastapi.openapi.utils import get_openapi
 
 from models import User
@@ -17,6 +18,7 @@ from routers.template import template_router
 from routers.obs_scene import scene_router
 
 from fastapi_users.router import get_auth_router, get_register_router, get_reset_password_router, get_users_router
+
 
 
 def custom_openapi():
@@ -76,9 +78,9 @@ app.add_middleware(
     #                "Authorization", "Access-Control-Allow-Origin"],
 )
 
-@app.get("/protected-route")
-def protected_route(user: User = Depends(current_active_user)):
-    return f"Hello, {user.email}!"
+@app.post("/auth/refresh")
+async def refresh_jwt(response: Response, user=Depends(fastapi_users.get_current_active_user)):
+    return await jwt_authentication.get_login_response(user, response)
 
 if __name__ == '__main__':
     uvicorn.run(app=app, host='0.0.0.0', port=API_PORT)

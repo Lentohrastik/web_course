@@ -64,7 +64,7 @@
                             </li>
                         </ul>
                         <div class="ms-lg-auto text-center">
-                            <router-link id="butt" to="/auth" class="btn btn">Войти в ACS</router-link>
+                            <div @click="logout" id="butt" class="btn btn">Выйти из ACS</div>
                         </div>
                     </div>
 
@@ -75,28 +75,29 @@
 </template>
 
 <script>
-import AtroposComponent from 'atropos/element';
-customElements.define('atropos-component', AtroposComponent);
+import axios from 'axios';
 export default {
-
+    methods: {
+        logout() {
+            axios({
+                method: 'post',
+                url: 'http://localhost:4446/auth/logout',
+                headers: {
+                    'accept': 'application/json'
+                },
+                withCredentials: true,
+            })
+                .then(() => {
+                    this.$router.push('/')
+                })
+                .catch(() => {
+                    this.notificationText = 'Что-то пошло не так!';
+                    this.isShowNotification = true;
+                    setTimeout(() => {
+                        this.isShowNotification = false;
+                    }, 5000)
+                });
+        }
+    }
 }
 </script>
-
-
-<style>
-.btn {
-    background-color: #6897C9;
-    color: #FFFAFF;
-}
-
-.btn:hover {
-    background-color: #15171a;
-    color: #6897C9;
-    border-color: #6897C9;
-}
-
-.my-atropos {
-    width: 60px;
-    height: 60px;
-}
-</style>
