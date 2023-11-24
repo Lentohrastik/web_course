@@ -1,0 +1,57 @@
+version: "3.7"
+services:
+  db:
+    image: postgres:14
+    container_name: db_auto_caption_system
+    ports:
+      - "54320:5432"
+    volumes:
+      - db_volume:/var/lib/postgresql/data
+    env_file:
+      - .env_non-dev
+
+  auto_caption_system:
+#    image: lentohrastik/auto-caption-system:latest
+    build:
+      context: .
+    command: sh -c "
+                 sleep 10 &&
+                 /auto_caption_system/docker/app.sh"
+    env_file:
+      - .env_non-dev
+    ports:
+      - "44460:4446"
+    volumes:
+      - app_volume:/etc/auto_caption_system/configs
+    depends_on:
+      - db
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4_container
+    restart: always
+    ports:
+      - "54000:80"
+    env_file:
+      - .env_non-dev
+    volumes:
+      - pgadmin_volume:/var/lib/pgadmin
+
+#  auto_caption_system:
+#    container_name: auto_caption_system
+#    build:
+#      context: .
+#    command: ["/auto_caption_system/docker/app.sh"]
+#    env_file:
+#      - .env_non-dev
+#    ports:
+#      - 444446
+#    volumes:
+#      - app_volume:/etc/auto_caption_system/configs
+#    depends_on:
+#      - db
+
+volumes:
+    app_volume:
+    db_volume:
+    pgadmin_volume:

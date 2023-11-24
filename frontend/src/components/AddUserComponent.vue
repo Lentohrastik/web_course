@@ -13,7 +13,7 @@
 
             <div class="card-group pb-5">
                 <div v-for="(item, idx) in photoExaples" v-bind:key="idx" class="card">
-                    <img :src="item.src" class="card-img-top" alt="...">
+                    <img :src="item.src" class="card-img-top" alt="Фото">
                     <div class="card-body">
                         <h5>
                             <i :class="item.class"></i> <span class="">{{ item.text }}</span>

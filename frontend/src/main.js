@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import {createRouter, createWebHistory} from 'vue-router'
+import VueCookies from 'vue-cookies';
 import App from './App.vue'
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -21,6 +22,7 @@ import ChartComponent from '/src/components/ChartComponent.vue'
 
 //app pages
 import AppComponent from '/src/components/AppComponent.vue'
+import AuthorizationComponent from '/src/components/AuthorizationComponent.vue'
 import AddUserComponent from '/src/components/AddUserComponent.vue'
 import TemplateComponent from '/src/components/TemplateComponent.vue'
 import OBSComponent from '/src/components/OBSComponent.vue'
@@ -43,6 +45,7 @@ const router = createRouter({
 
         //app paths
         { path: '/app', component: AppComponent},
+        { path: '/auth', component: AuthorizationComponent},
         { path: '/app/add_user', component: AddUserComponent},
         { path: '/app/template', component: TemplateComponent},
         { path: '/app/obs', component: OBSComponent},
@@ -54,5 +57,6 @@ const router = createRouter({
 const app = createApp(App)
 app.use(bootstrap, router)
 app.use(router)
+app.use(VueCookies)
 app.mount('#app')
 

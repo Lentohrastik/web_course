@@ -64,10 +64,9 @@
                             </li>
                         </ul>
                         <div class="ms-lg-auto text-center">
-                            <router-link id="butt" to="/app" class="btn btn">Войти в ACS</router-link>
+                            <div @click="enterACS" id="butt" class="btn btn">Войти в ACS</div>
                         </div>
                     </div>
-
                 </div>
             </nav>
         </div>
@@ -78,6 +77,15 @@
 import AtroposComponent from 'atropos/element';
 customElements.define('atropos-component', AtroposComponent);
 export default {
+    methods: {
+        enterACS() {
+            if (this.$cookies.get('ACS_cookie')) {
+                this.$router.push('/app')
+            } else {
+                this.$router.push('/auth')
+            }
+        }
+    }
 
 }
 </script>
