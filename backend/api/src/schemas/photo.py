@@ -7,7 +7,7 @@ class PhotoRead(BaseModel):
     name: str
     role: str
     embeding: List[float]
-    team_id: int
+    team_id: uuid.UUID
     url: str
 
 
@@ -15,7 +15,7 @@ class PhotoCreate(BaseModel):
     name: str
     role: str
     embeding: List[float]
-    team_id: int
+    team_id: uuid.UUID
     url: str
 
 
@@ -23,5 +23,5 @@ class PhotoUpdate(BaseModel):
     name: Optional[str]
     role: Optional[str]
     embeding: Optional[List[float]]
-    team_id: Optional[int]
+    team_id: Optional[uuid.UUID]
     url: Optional[str]

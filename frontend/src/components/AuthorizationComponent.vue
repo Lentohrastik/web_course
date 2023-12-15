@@ -153,6 +153,10 @@ export default {
                 email: this.email,
                 username: this.username,
                 password: this.password,
+                template_id: 0,
+                obs_host: '127.0.0.1',
+                obs_port: 4455,
+                obs_password: ''
             }
 
             axios({

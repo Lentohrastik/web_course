@@ -1,29 +1,37 @@
-from fastapi import APIRouter
+from typing import List
+import uuid
+from fastapi import APIRouter, Depends, HTTPException
+from sqlalchemy.exc import SQLAlchemyError
+from src.schemas.main_schemas import ErrorSchema
+from services.template import TemplateService
 
-from src.schemas.template import TemplateCreate, TemplateRead, TemplateUpdate
+from src.schemas.template import TemplateRead
+from src.utils.unit_of_work import IUnitOfWork, UnitOfWork
 
 
 template_router = APIRouter(
-    prefix='/photo',
-    tags=['Photo']
+    prefix='/template',
+    tags=['Template']
 )
 
 
-@template_router.get('/{id}', responses={200: {"model": TemplateRead}})
-async def get_template_by_id(id: int) -> TemplateRead:
-    pass
+@template_router.get('/all', responses={200: {"model": List[TemplateRead]}, 500: {"model": ErrorSchema}})
+async def get_template_by_id(uow: IUnitOfWork = Depends(UnitOfWork)) -> List[TemplateRead]:
+    try:
+        templates = await TemplateService().get_all_templates(uow)
+        return templates
+    except SQLAlchemyError:
+        raise HTTPException(500, detail=f"Ошибка обращения к базе данных!")
+    except:
+        raise HTTPException(500, detail=f"Неизвестная ошибка!")
 
 
-@template_router.post('/', responses={200: {"model": TemplateRead}})
-async def create_template(team: TemplateCreate) -> TemplateRead:
-    pass
-
-
-@template_router.patch('/{id}', responses={200: {"model": TemplateRead}})
-async def updatae_template_by_id(id: int, team: TemplateUpdate) -> TemplateRead:
-    pass
-
-
-@template_router.delete('/{id}', responses={200: {"model": int}})
-async def delete_template_by_id(id: int) -> int:
-    pass
+@template_router.get('/team/{team_id}', responses={200: {"model": TemplateRead}, 500: {"model": ErrorSchema}})
+async def get_template_by_id(team_id: uuid.UUID, uow: IUnitOfWork = Depends(UnitOfWork)) -> TemplateRead:
+    try:
+        template = await TemplateService().get_template_by_team_id(uow, team_id)
+        return template
+    except SQLAlchemyError:
+        raise HTTPException(500, detail=f"Ошибка обращения к базе данных!")
+    except:
+        raise HTTPException(500, detail=f"Неизвестная ошибка!")
